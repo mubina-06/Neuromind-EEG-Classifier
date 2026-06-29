@@ -196,7 +196,7 @@ def main():
     create_gradcam_placeholder()
     
     print("\n🎉 All placeholder images created!")
-    print("📁 Location: assets/demo_screenshots/")
+    print("📁 Location: assets/screenshots/")
     print("\n💡 These are placeholder visualizations.")
     print("🚀 Run 'streamlit run src/app.py' to see the real interface!")
 

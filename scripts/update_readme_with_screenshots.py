@@ -58,22 +58,22 @@ def generate_screenshot_section():
 ### Main Application Interface
 *Professional EEG analysis platform with real-time signal processing*
 
-![NeuroMind Main Interface](assets/demo_screenshots/07_main_application_interface.png)
+![NeuroMind Main Interface](assets/screenshots/dashboard.png)
 
 ### AI Brain State Classification  
 *Real-time mental state detection with confidence scoring*
 
-![Brain State Analysis](assets/demo_screenshots/08_ai_brain_state_analysis.png)
+![Brain State Analysis](assets/screenshots/results.png)
 
 ### Model Performance Dashboard
 *Comprehensive model metrics and comparison analytics*
 
-![Performance Dashboard](assets/demo_screenshots/01_model_performance_dashboard.png)
+![Performance Dashboard](assets/screenshots/performance.png)
 
 ### Explainable AI Visualization
 *Grad-CAM attention maps showing AI decision-making process*
 
-![Grad-CAM Visualization](assets/demo_screenshots/09_gradcam_explainable_ai.png)
+![Grad-CAM Visualization](assets/screenshots/gradcam.png)
 
 ### Training Progress Analysis
 *Real-time training curves and detailed performance metrics*
@@ -81,7 +81,7 @@ def generate_screenshot_section():
 <details>
 <summary>📊 Click to view detailed analytics</summary>
 
-![Training Progress](assets/demo_screenshots/02_training_progress_analysis.png)
+![Training Progress](assets/screenshots/performance.png)
 
 </details>
 
@@ -91,7 +91,7 @@ def generate_screenshot_section():
 <details>
 <summary>🔬 Click to view advanced analysis</summary>
 
-![Advanced Analysis](assets/demo_screenshots/04_advanced_model_analysis.png)
+![Advanced Analysis](assets/screenshots/architecture.png)
 
 </details>
 
@@ -101,7 +101,7 @@ def generate_screenshot_section():
 <details>
 <summary>🧠 Click to view feature analysis</summary>
 
-![Feature Analysis](assets/demo_screenshots/05_feature_importance_analysis.png)
+![Feature Analysis](assets/screenshots/workflow.png)
 
 </details>
 
@@ -111,7 +111,7 @@ def generate_screenshot_section():
 <details>
 <summary>💡 Click to view model recommendations</summary>
 
-![Model Recommendations](assets/demo_screenshots/06_model_selection_recommendations.png)
+![Model Recommendations](assets/screenshots/performance.png)
 
 </details>
 
@@ -203,8 +203,8 @@ def main():
     
     if not existing:
         print("\n📋 Next Steps:")
-        print("1. Add screenshots to assets/demo_screenshots/ using SCREENSHOT_GUIDE.md")
-        print("2. Run this script again to update README.md")
+        print("1. Screenshots are now organized in assets/screenshots/ folder")
+        print("2. All images use correct relative paths and are clickable")
         return 0
     
     # Update README

@@ -43,11 +43,23 @@ docker-compose up
 
 ## 📸 Screenshots
 
-![Main Dashboard](assets/demo_screenshots/main_dashboard_placeholder.png)
+### 🖥️ Main Dashboard
+[![Main Dashboard](assets/screenshots/dashboard.png)](assets/screenshots/dashboard.png)
 
-![Analysis Results](assets/demo_screenshots/prediction_results_placeholder.png)
+### 📊 Analysis Results  
+[![Analysis Results](assets/screenshots/results.png)](assets/screenshots/results.png)
 
-![Grad-CAM Visualization](assets/demo_screenshots/gradcam_interface_placeholder.png)
+### 🔥 Grad-CAM Visualization
+[![Grad-CAM Visualization](assets/screenshots/gradcam.png)](assets/screenshots/gradcam.png)
+
+### 🏗️ System Architecture
+[![System Architecture](assets/screenshots/architecture.png)](assets/screenshots/architecture.png)
+
+### 🔄 Processing Workflow
+[![Processing Workflow](assets/screenshots/workflow.png)](assets/screenshots/workflow.png)
+
+### 📈 Model Performance
+[![Model Performance](assets/screenshots/performance.png)](assets/screenshots/performance.png)
 
 ## 🔧 How it Works
 
