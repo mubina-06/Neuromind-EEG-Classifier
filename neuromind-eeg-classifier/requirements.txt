@@ -1,0 +1,29 @@
+# Core ML and Signal Processing
+torch>=2.0.0
+torchvision>=0.15.0
+mne>=1.4.0
+numpy>=1.24.0
+scipy>=1.10.0
+scikit-learn>=1.2.0
+
+# Data Processing
+pandas>=2.0.0
+Pillow>=9.5.0
+tqdm>=4.65.0
+
+# Visualization
+matplotlib>=3.7.0
+seaborn>=0.12.0
+plotly>=5.15.0
+
+# Web Application
+streamlit>=1.28.0
+
+# Development and Testing
+pytest>=7.0.0
+black>=23.0.0
+flake8>=6.0.0
+jupyter>=1.0.0
+
+# Optional: For GPU acceleration
+# torch-audio>=2.0.0  # Uncomment if needed
