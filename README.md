@@ -276,12 +276,16 @@ print(f"Mental State: {prediction} (Confidence: {confidence:.2%})")
 
 ## 📸 Application Screenshots
 
+> **� Interactive Demo**: Run `streamlit run src/app.py` to experience the full interface!
+
 ### 🖥️ Main Dashboard
 
 <div align="center">
 
-![Main Dashboard](assets/demo_screenshots/main_dashboard.png)
-*Professional interface with real-time EEG visualization and model selection*
+![Main Dashboard](assets/demo_screenshots/main_dashboard_placeholder.png)
+*Professional interface with real-time EEG visualization, model selection, and performance metrics*
+
+**Features**: Multi-channel EEG display, STFT spectrograms, AI predictions, performance analytics
 
 </div>
 
@@ -289,19 +293,25 @@ print(f"Mental State: {prediction} (Confidence: {confidence:.2%})")
 
 <div align="center">
 
-![Analysis Results](assets/demo_screenshots/prediction_results.png)
-*Comprehensive results showing classification, confidence scores, and visualizations*
+![Analysis Results](assets/demo_screenshots/prediction_results_placeholder.png)
+*Comprehensive classification results with confidence scoring and detailed breakdowns*
+
+**Shows**: Mental state detection, confidence levels, probability distributions, processing metrics
 
 </div>
 
-### 🔥 Grad-CAM Heatmaps
+### 🔥 Grad-CAM Explainable AI
 
 <div align="center">
 
-![Grad-CAM Interface](assets/demo_screenshots/gradcam_interface.png)
-*Interactive Grad-CAM visualization for explainable AI analysis*
+![Grad-CAM Interface](assets/demo_screenshots/gradcam_interface_placeholder.png)
+*Interactive attention visualization showing AI decision-making process for medical interpretability*
+
+**Provides**: Model attention maps, brain region analysis, transparent AI explanations
 
 </div>
+
+> **💡 Note**: These are demonstration visualizations. The actual interface is interactive with real-time processing, animations, and dynamic charts. Launch the application locally for the full experience!
 
 ## 🗂️ Repository Structure
 
