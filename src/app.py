@@ -1,12 +1,27 @@
+#!/usr/bin/env python3
 """
-Modern EEG Brain Signal Classifier - Professional UI/UX
-========================================================
-Enhanced Streamlit app with modern design, animations, and better UX
-Run: streamlit run app/modern_app.py
+NeuroMind EEG Brain Signal Classifier - Modern Streamlit Application
+
+A professional web interface for real-time EEG mental state classification using
+deep learning models with explainable AI capabilities.
+
+Author: NeuroMind Team
+Version: 1.0.0
+License: MIT
 """
 
-import sys, os
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
+from __future__ import annotations
+
+import sys
+import os
+from pathlib import Path
+from typing import Optional, Tuple, Dict, List, Union, Any
+import logging
+from dataclasses import dataclass
+
+# Add src to path for imports
+project_root = Path(__file__).parent.parent
+sys.path.insert(0, str(project_root))
 
 import streamlit as st
 import numpy as np
@@ -16,17 +31,52 @@ import matplotlib.pyplot as plt
 import matplotlib
 matplotlib.use('Agg')
 from PIL import Image
-from pathlib import Path
 import time
 import plotly.graph_objects as go
 import plotly.express as px
 from plotly.subplots import make_subplots
 import pandas as pd
 
-from data.preprocessing import preprocess_raw, epoch_raw, epoch_to_spectrogram, load_physionet_data
-from models.model import build_model, get_last_conv_layer, build_ensemble
-from utils.gradcam import GradCAM, overlay_heatmap
-from training.calibration import load_temperature
+# Import NeuroMind modules
+try:
+    from src.models.model import build_model, build_ensemble, get_last_conv_layer
+    from src.data.preprocessing import load_physionet_data, preprocess_raw, epoch_raw, epoch_to_spectrogram
+    from src.utils.gradcam import GradCAM, overlay_heatmap
+    from src.training.calibration import load_temperature
+except ImportError as e:
+    logger.error(f"Failed to import NeuroMind modules: {e}")
+    st.error("❌ Failed to load NeuroMind modules. Please ensure all dependencies are installed.")
+    st.stop()
+
+# Configure logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+)
+logger = logging.getLogger(__name__)
+
+# Type definitions
+ModelType = Union[torch.nn.Module, Any]
+TensorType = torch.Tensor
+ArrayType = np.ndarray
+
+@dataclass
+class ModelConfig:
+    """Configuration for model loading and inference."""
+    name: str
+    path: str
+    architecture: str
+    accuracy: float
+    inference_time: float
+    memory_usage: float
+    
+@dataclass
+class PredictionResult:
+    """Structured result from model prediction."""
+    predicted_class: str
+    confidence: float
+    probabilities: Dict[str, float]
+    processing_time: float
 
 # ══════════════════════════════════════════════════════════════════════════════
 # CONFIGURATION & CONSTANTS
@@ -358,8 +408,18 @@ def load_model_cached(arch):
     
     return model.to(DEVICE).eval(), False
 
-def create_eeg_plot(raw, n_channels=6, duration=4):
-    """Create modern EEG plot with Plotly"""
+def create_eeg_plot(raw: Any, n_channels: int = 6, duration: float = 4) -> go.Figure:
+    """
+    Create modern EEG plot with Plotly for interactive visualization.
+    
+    Args:
+        raw: MNE Raw object containing EEG data
+        n_channels: Number of channels to display
+        duration: Duration of signal to plot in seconds
+        
+    Returns:
+        Plotly figure object
+    """
     sfreq = raw.info["sfreq"]
     n_samples = int(sfreq * duration)
     data, times = raw[:n_channels, :n_samples]
@@ -400,8 +460,17 @@ def create_eeg_plot(raw, n_channels=6, duration=4):
     
     return fig
 
-def create_confidence_chart(probs, classes):
-    """Create animated confidence chart"""
+def create_confidence_chart(probs: ArrayType, classes: List[str]) -> go.Figure:
+    """
+    Create animated confidence chart showing prediction probabilities.
+    
+    Args:
+        probs: Array of prediction probabilities
+        classes: List of class names
+        
+    Returns:
+        Plotly bar chart figure
+    """
     df = pd.DataFrame({
         'Class': classes,
         'Probability': probs * 100,
@@ -431,8 +500,16 @@ def create_confidence_chart(probs, classes):
     
     return fig
 
-def get_confidence_color_and_message(confidence):
-    """Get color and message based on confidence level"""
+def get_confidence_color_and_message(confidence: float) -> Tuple[str, str, str]:
+    """
+    Get color and message based on confidence level.
+    
+    Args:
+        confidence: Confidence percentage (0-100)
+        
+    Returns:
+        Tuple of (color_hex, message, emoji)
+    """
     if confidence >= 80:
         return "#00E676", "High Confidence", "🟢"
     elif confidence >= 60:
@@ -440,8 +517,20 @@ def get_confidence_color_and_message(confidence):
     else:
         return "#FF5722", "Low Confidence", "🔴"
 
-def run_prediction_with_animation(model, epoch_data, sfreq, temperature=1.0):
-    """Run prediction with loading animation"""
+def run_prediction_with_animation(model: ModelType, epoch_data: ArrayType, 
+                                 sfreq: float, temperature: float = 1.0) -> Tuple[ArrayType, TensorType, str, float, ArrayType]:
+    """
+    Run prediction with loading animation and progress feedback.
+    
+    Args:
+        model: PyTorch model for inference
+        epoch_data: EEG epoch data array
+        sfreq: Sampling frequency
+        temperature: Temperature scaling factor for calibration
+        
+    Returns:
+        Tuple of (spectrogram_image, input_tensor, predicted_class, confidence, probabilities)
+    """
     progress_bar = st.progress(0)
     status_text = st.empty()
     
@@ -483,8 +572,13 @@ def run_prediction_with_animation(model, epoch_data, sfreq, temperature=1.0):
 # ══════════════════════════════════════════════════════════════════════════════
 # SIDEBAR CONFIGURATION
 # ══════════════════════════════════════════════════════════════════════════════
-def create_sidebar():
-    with st.sidebar:
+def create_sidebar() -> Tuple[str, bool, int, bool, bool]:
+    """
+    Create and configure the application sidebar with all controls.
+    
+    Returns:
+        Tuple of (selected_architecture, use_real_data, epoch_index, show_gradcam, use_calibration)
+    """
         st.markdown("""
         <div class="sidebar-header">
             <h2>🧠 NeuroMind</h2>

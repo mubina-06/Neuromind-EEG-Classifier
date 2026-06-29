@@ -1,0 +1,60 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+type: software
+title: "NeuroMind: Advanced EEG Brain Signal Classification"
+abstract: "A production-ready AI system for real-time EEG mental state classification using deep learning with explainable AI capabilities. Achieves 67.3% accuracy on PhysioNet data with comprehensive Grad-CAM visualization for medical interpretability."
+authors:
+  - family-names: "Gurram"
+    given-names: "Durga Anuhya"
+    orcid: ""
+    affiliation: "SRM University-AP, Amaravati, India"
+  - family-names: "Patan"  
+    given-names: "Mubina"
+    orcid: ""
+    affiliation: "SRM University-AP, Amaravati, India"
+version: "1.0.0"
+doi: ""
+date-released: 2024-12-29
+url: "https://github.com/your-username/neuromind-eeg-classifier"
+repository-code: "https://github.com/your-username/neuromind-eeg-classifier"
+license: MIT
+keywords:
+  - "EEG"
+  - "brain signal classification" 
+  - "deep learning"
+  - "explainable AI"
+  - "Grad-CAM"
+  - "PyTorch"
+  - "Streamlit"
+  - "neuroscience"
+  - "mental state classification"
+  - "PhysioNet"
+  - "ResNet"
+  - "EfficientNet"
+  - "ensemble learning"
+preferred-citation:
+  type: article
+  title: "NeuroMind: Real-time EEG Mental State Classification using Deep Learning with Explainable AI"
+  authors:
+    - family-names: "Gurram"
+      given-names: "Durga Anuhya"
+    - family-names: "Patan"
+      given-names: "Mubina"
+  journal: "To be submitted"
+  year: 2024
+references:
+  - type: dataset
+    title: "EEG Motor Movement/Imagery Dataset"
+    authors:
+      - family-names: "Schalk"
+        given-names: "Gerwin"
+      - family-names: "McFarland" 
+        given-names: "Dennis J."
+      - family-names: "Hinterberger"
+        given-names: "Thilo"
+      - family-names: "Birbaumer"
+        given-names: "Niels"
+      - family-names: "Wolpaw"
+        given-names: "Jonathan R."
+    url: "https://physionet.org/content/eegmmidb/1.0.0/"
+    year: 2004
