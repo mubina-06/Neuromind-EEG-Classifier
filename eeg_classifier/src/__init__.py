@@ -1,1 +1,0 @@
-# EEG Classifier source package

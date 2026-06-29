@@ -16,54 +16,17 @@ parts/
 sdist/
 var/
 wheels/
-pip-wheel-metadata/
-share/python-wheels/
 *.egg-info/
 .installed.cfg
 *.egg
 MANIFEST
 
-# PyTorch
-*.pth
-*.pt
-*.tar
-
 # Virtual Environment
 .venv/
 venv/
-env/
 ENV/
-.env
-
-# Jupyter Notebook
-.ipynb_checkpoints
-
-# Data files (too large for GitHub)
-data/
-*.dat
-*.edf
-*.bdf
-*.h5
-*.hdf5
-
-# Results and outputs
-results/
-outputs/
-*.png
-*.jpg
-*.jpeg
-*.gif
-*.pdf
-!README_images/
-
-# OS specific
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
+env/
+.virtualenv/
 
 # IDE
 .vscode/
@@ -72,24 +35,36 @@ Thumbs.db
 *.swo
 *~
 
-# Large model files
-models/*.pth
-models/*.h5
-models/*.pkl
-checkpoints/
-wandb/
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Data Files (Large Files)
+data/
+models/
+*.pth
+*.h5
+*.pkl
+*.joblib
+results/
+outputs/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Environment Variables
+.env
+.env.local
+
+# Testing
+.coverage
+.pytest_cache/
+htmlcov/
 
 # Temporary files
 *.tmp
 *.temp
-*.log
-
-# Documentation temp files
-*.tex
-!main.tex
-*.aux
-*.bbl
-*.blg
-*.fdb_latexmk
-*.fls
-*.synctex.gz

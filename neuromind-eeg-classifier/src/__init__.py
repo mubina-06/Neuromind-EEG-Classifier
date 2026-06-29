@@ -1,1 +1,0 @@
-# NeuroMind EEG Classifier - Core modules
